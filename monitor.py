@@ -8,20 +8,23 @@ WHAT THIS DOES (plain English):
   2. Takes the visible text of each page and hashes it (SHA256).
   3. Compares each hash with the value stored last time in
      page_hashes.json.
-  4. If a page changed, it writes a human-readable "unified diff"
-     (old vs new text) into latest_changes.md.
-  5. If NOTHING changed, it deletes latest_changes.md (if present)
-     so the Claude Routine knows there is nothing to report.
+  4. If a page changed, it writes three artifacts:
+       - latest_changes.md   (unified-diff markdown, for Discord)
+       - latest_changes.html (side-by-side HTML, for Telegram attachment)
+       - latest_changes.json (per-page +/- counts, for caption building)
+  5. If NOTHING changed, it deletes those files so downstream
+     notifiers know there is nothing to send.
 
-This script does NOT talk to Discord. A separate step
-(notify_discord.py) reads latest_changes.md and posts it to a
-Discord webhook. Keeping the two jobs separate makes this
-script deterministic and free.
+This script does NOT talk to Discord or Telegram. Separate scripts
+(notify_discord.py, notify_telegram.py) read the artifacts above
+and post to their respective platforms. Keeping the jobs separate
+makes this script deterministic and free.
 ================================================================
 """
 
 import difflib
 import hashlib
+import html as html_lib
 import json
 import os
 from datetime import datetime, timezone
@@ -43,6 +46,8 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 HASHES_FILE = os.path.join(SCRIPT_DIR, "page_hashes.json")
 SNAPSHOTS_DIR = os.path.join(SCRIPT_DIR, "snapshots")
 CHANGES_FILE = os.path.join(SCRIPT_DIR, "latest_changes.md")
+CHANGES_HTML_FILE = os.path.join(SCRIPT_DIR, "latest_changes.html")
+CHANGES_JSON_FILE = os.path.join(SCRIPT_DIR, "latest_changes.json")
 
 # OPTIONAL: if the CHROME_PATH environment variable is set, use that
 # Chromium/Chrome binary instead of the one `playwright install`
@@ -137,6 +142,63 @@ def save_snapshot(page_name, content):
         f.write(content)
 
 
+def count_diff_lines(diff_text):
+    """Return (added, removed) line counts from a unified diff."""
+    added = 0
+    removed = 0
+    for line in diff_text.splitlines():
+        if line.startswith("+") and not line.startswith("+++"):
+            added += 1
+        elif line.startswith("-") and not line.startswith("---"):
+            removed += 1
+    return added, removed
+
+
+def build_html_report(change_records, timestamp):
+    """Build a single self-contained HTML doc with side-by-side diffs
+    for every changed page. Designed to be downloaded once from a
+    Telegram message and opened in a browser."""
+    differ = difflib.HtmlDiff(wrapcolumn=80)
+    # difflib ships its own CSS for the diff table (diff_add / diff_chg / diff_sub).
+    diff_styles = difflib.HtmlDiff._styles
+    sections = []
+    for rec in change_records:
+        table = differ.make_table(
+            rec["old"].splitlines(),
+            rec["new"].splitlines(),
+            fromdesc=html_lib.escape(f"{rec['name']} — before"),
+            todesc=html_lib.escape(f"{rec['name']} — after"),
+            context=True,
+            numlines=3,
+        )
+        sections.append(
+            f'<section>'
+            f'<h2>{html_lib.escape(rec["name"])}</h2>'
+            f'<p><a href="{html_lib.escape(rec["url"], quote=True)}" target="_blank" rel="noopener">'
+            f'{html_lib.escape(rec["url"])}</a></p>'
+            f'{table}'
+            f'</section>'
+        )
+    return (
+        "<!DOCTYPE html>\n"
+        '<html lang="en"><head><meta charset="utf-8">'
+        f"<title>Page Changes — {html_lib.escape(timestamp)}</title>"
+        "<style>"
+        "body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;"
+        "max-width:1200px;margin:2em auto;padding:0 1em;color:#222}"
+        "h1{color:#c1121f}"
+        "h2{border-bottom:2px solid #ddd;padding-bottom:.3em;margin-top:2em}"
+        "section{margin-bottom:3em}"
+        "table.diff{font-family:ui-monospace,Menlo,Consolas,monospace;"
+        "font-size:13px;width:100%;border-collapse:collapse}"
+        f"{diff_styles}"
+        "</style></head><body>"
+        f"<h1>Page Changes Detected</h1>"
+        f"<p><b>{len(change_records)} page(s) changed</b> · {html_lib.escape(timestamp)}</p>"
+        f"<hr>{''.join(sections)}</body></html>"
+    )
+
+
 def generate_diff(old_text, new_text, page_name):
     """Build a unified diff (the +/- lines) between old and new text."""
     # splitlines() WITHOUT keepends + lineterm="" keeps every diff line on its
@@ -172,7 +234,8 @@ def main():
 
     old_hashes = load_hashes()
     new_hashes = {}
-    changes = []  # list of (name, url, diff_text) for pages that changed
+    # Each entry: {name, url, old, new, diff}
+    changes = []
     first_run = len(old_hashes) == 0
 
     with sync_playwright() as p:
@@ -202,7 +265,13 @@ def main():
                 print("   🚨 CHANGE DETECTED")
                 old_content = load_snapshot(name)
                 diff = generate_diff(old_content, content, name)
-                changes.append((name, url, diff))
+                changes.append({
+                    "name": name,
+                    "url": url,
+                    "old": old_content,
+                    "new": content,
+                    "diff": diff,
+                })
                 save_snapshot(name, content)
             else:
                 print("   ✅ No change")
@@ -211,21 +280,42 @@ def main():
 
     save_hashes(new_hashes)
 
-    # ─── WRITE OR CLEAR THE CHANGES FILE ──────────────────────────
+    # ─── WRITE OR CLEAR THE CHANGES FILES ─────────────────────────
+    output_files = (CHANGES_FILE, CHANGES_HTML_FILE, CHANGES_JSON_FILE)
     if changes:
+        # 1. Markdown unified-diff (for Discord chunked text post).
         with open(CHANGES_FILE, "w") as f:
             f.write(f"# 🚨 Page Changes Detected — {now}\n\n")
             f.write(f"**{len(changes)} page(s) changed.**\n\n")
-            for name, url, diff in changes:
-                f.write(f"---\n\n## 📄 {name}\n\n")
-                f.write(f"🔗 {url}\n\n")
-                f.write(f"### Diff:\n\n```diff\n{diff}\n```\n\n")
-        print(f"\n📋 Wrote {CHANGES_FILE} ({len(changes)} change(s))")
+            for rec in changes:
+                f.write(f"---\n\n## 📄 {rec['name']}\n\n")
+                f.write(f"🔗 {rec['url']}\n\n")
+                f.write(f"### Diff:\n\n```diff\n{rec['diff']}\n```\n\n")
+
+        # 2. Side-by-side HTML (for Telegram attachment).
+        with open(CHANGES_HTML_FILE, "w") as f:
+            f.write(build_html_report(changes, now))
+
+        # 3. Structured JSON summary (for notifiers to build captions).
+        with open(CHANGES_JSON_FILE, "w") as f:
+            summary = []
+            for rec in changes:
+                added, removed = count_diff_lines(rec["diff"])
+                summary.append({
+                    "name": rec["name"],
+                    "url": rec["url"],
+                    "added": added,
+                    "removed": removed,
+                })
+            json.dump({"timestamp": now, "changes": summary}, f, indent=2)
+
+        print(f"\n📋 Wrote {len(changes)} change(s) to .md / .html / .json")
     else:
-        # No changes → make sure no stale changes file is left behind.
-        if os.path.exists(CHANGES_FILE):
-            os.remove(CHANGES_FILE)
-        print(f"\n✅ No changes — {CHANGES_FILE} not created")
+        # No changes → make sure no stale changes files are left behind.
+        for path in output_files:
+            if os.path.exists(path):
+                os.remove(path)
+        print(f"\n✅ No changes — output files not created")
 
 
 if __name__ == "__main__":

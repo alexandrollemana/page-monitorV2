@@ -1,5 +1,7 @@
-# Don't commit the temporary changes file — regenerated each run
+# Don't commit the temporary changes files — regenerated each run
 latest_changes.md
+latest_changes.html
+latest_changes.json
 
 # Python
 __pycache__/
