@@ -55,16 +55,39 @@ CHROME_PATH = os.environ.get("CHROME_PATH")
 os.makedirs(SNAPSHOTS_DIR, exist_ok=True)
 
 
+# Selectors tried in order to isolate the *article* content and strip away
+# site chrome (top nav, side menus, footers). First match with enough text
+# wins. `body` is the safety net so we never return nothing.
+CONTENT_SELECTORS = [
+    "article",
+    "main",
+    "[role='main']",
+    ".devsite-article-body",
+    ".devsite-article",
+    "body",
+]
+MIN_CONTENT_CHARS = 500
+
+
 # ─── FETCH ONE PAGE (WAITING FOR JAVASCRIPT) ──────────────────────
 def fetch_page_content(url, browser):
-    """Open `url` in the headless browser, wait for JS, return visible text."""
+    """Open `url` in the headless browser, wait for JS, return article text."""
     page = browser.new_page()
     try:
-        # Go to the page and wait until network activity settles.
         page.goto(url, wait_until="networkidle", timeout=30000)
-        # Extra safety pause so any delayed JS injection finishes.
         page.wait_for_timeout(3000)
-        # inner_text("body") returns what a HUMAN sees, not raw HTML.
+        for selector in CONTENT_SELECTORS:
+            try:
+                element = page.query_selector(selector)
+            except Exception:
+                continue
+            if not element:
+                continue
+            text = (element.inner_text() or "").strip()
+            if len(text) >= MIN_CONTENT_CHARS:
+                print(f"   ↳ extracted via '{selector}' ({len(text)} chars)")
+                return text
+        # Fallback: nothing met the threshold — return whatever body has.
         return page.inner_text("body").strip()
     except Exception as e:
         print(f"⚠️ Error fetching {url}: {e}")
