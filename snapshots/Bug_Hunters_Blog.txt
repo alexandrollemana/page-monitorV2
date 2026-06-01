@@ -1,0 +1,83 @@
+1
+BLOG
+showBlog
+Security Engineering Blog 
+Google's goal is to make it easier for ourselves, and the rest of the world, to ship secure products. Our blog is intended to share ways in which we make the Internet, as a whole, safer, and what that journey entails.
+2
+BLOGS
+showValues
+
+FILTERS (71 ARTICLES)
+
+HARSH LAL | MAY 27, 2026
+
+A Look at Hardware Security Keys for Passkeys
+Passkeys can be combined with hardware security keys to implement advanced security features when a particularly robust security strategy is required.
+Read more
+arrow_forward
+
+SAM ERB, MARTIN STRAKA, JOHN KOTHEIMER | MAY 11, 2026
+
+bugSWAT in Seoul – April 2026
+In this blog post, we'll take a look at what makes bugSWAT events valuable in general, and focus on the latest edition in Seoul, which took place in April 2026.
+Read more
+arrow_forward
+
+ALEX GOUGH, SHAILESH SAINI, TONY MENDEZ | APR 30, 2026
+
+Evolving the Android & Chrome VRPs for the AI Era
+We are announcing changes to the Chrome & Android Vulnerability Reward Programs (VRP) which take effect immediately and are focused on adjusting our reward amounts and bonuses to reflect the types of reports and bug categories that provide the most value to security today.
+Read more
+arrow_forward
+
+CAMILLE SCHNEIDER, JAN GORA, SAM ERB | APR 8, 2026
+
+Standardizing Rewards in Google VRP: Introducing Information Tiers and Action Criticality
+We are evolving our reward model to reflect the changing security landscape by introducing two new dimensions to our model: Information Tiers and Action Criticality.
+Read more
+arrow_forward
+
+HARSH LAL | MAR 30, 2026
+
+Passkeys are Your New Best Friend
+Find out more about how passkeys, which are designed to replace passwords, work and which advantages they bring.
+Read more
+arrow_forward
+
+CAMILLE SCHNEIDER, JESSICA ZHANG, HAYDEN BLAUZVERN | MAR 19, 2026
+
+Streamlining Google’s OSS VRP: Key Rule Updates
+Read about our updates to the OSS VRP rules which are designed to help us filter out low-quality reports and focus on real-world impact.
+Read more
+arrow_forward
+
+TONY MENDEZ, DIRK GÖHMANN | MAR 11, 2026
+
+Google VRPs in Review – 2025
+This blog post takes you through the 2025 highlights across the assorted VRPs at Google.
+Read more
+arrow_forward
+
+JUN KOKATSU, KOEN VERNOOIJ, FABIAN BORNHOFEN | MAR 9, 2026
+
+Mitigating URL-based Exfiltration in Gemini
+This post takes a look at how Gemini and other agents created by Google mitigate URL-based data exfiltration attacks.
+Read more
+arrow_forward
+
+HARSH LAL | MAR 4, 2026
+
+Hybrid Transport Goes Offline!
+Find out how the FIDO alliances's Hybrid transport architecture was expanded to support authentication in the offline world, increasing reliability and unlocking many new use cases.
+Read more
+arrow_forward
+
+HARSH LAL | FEB 23, 2026
+
+Hybrid Protocol: The JSON Upgrade
+This post highlights how Hybrid transport is being extended to support generic JSON messages – paving the way for a host of new, secure authentication and credential use cases.
+Read more
+arrow_forward
+Items per page:
+10
+1 – 10 of 71
