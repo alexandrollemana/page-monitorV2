@@ -36,7 +36,7 @@ If you have questions related to our handling of submitted security reports or t
 
 Tip: Not sure which program to report the issue you've discovered to? When in doubt, report to the Google and Alphabet Vulnerability Reward Program (VRP).
 
-Android & Friends 
+Android & Friends & my new test 
 Program name	Scope	Where to report
 Android and Google Devices Security Reward Program (rules)	Security issues affecting Pixel, Smart Home, Google Nest, Home APIs, Pixel Watch, and Fitbit devices and their latest operating systems	Use the standard form (report to Android & Devices VRP)
 Google Mobile Vulnerability Reward Program (rules)	Security issues affecting first-party Android applications	Use the standard form (report to Mobile VRP)
