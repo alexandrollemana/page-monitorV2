@@ -1,0 +1,286 @@
+Skip to main content
+Docs
+Android Code Search
+/
+Sign in
+DOCUMENTATION
+What's New?
+Getting Started
+Security
+Core Topics
+Compatibility
+Android Devices
+Automotive
+Reference
+Overview
+Security overview
+Secure an Android device
+Kernel security
+App security
+Implement security
+Updates and resources
+ASPIRE
+Reports
+Enhancements
+Acknowledgements
+Android Security Bulletins
+Features
+Testing
+Best practices
+On this page
+Report security issues
+Triage bugs
+Context types
+Severity
+Severity modifiers
+Local versus proximal versus remote
+Network security
+Biometric authentication
+SYSTEM_ALERT_WINDOW and tapjacking
+Multi-user security in Android Automotive OS
+Affected component
+Notify partners
+Release code to AOSP
+Receive Android updates
+Update Google services
+Other resources
+Reports
+
+Effective in 2026, to align with our trunk stable development model and ensure platform stability for the ecosystem, we will publish source code to AOSP in Q2 and Q4. For building and contributing to AOSP, we recommend utilizing android-latest-release instead of aosp-main. The android-latest-release manifest branch will always reference the most recent release pushed to AOSP. For more information, see Changes to AOSP.
+
+AOSP
+Docs
+Security
+Was this helpful?
+Security updates and resources
+
+The Android security team is responsible for managing security vulnerabilities discovered in the Android platform and many of the core Android apps bundled with Android devices.
+
+The Android security team finds security vulnerabilities through internal research and also responds to bugs reported by third parties. Sources of external bugs include issues reported through the vulnerability form, published and prepublished academic research, upstream open source project maintainers, notifications from our device manufacturer partners, and publicly disclosed issues posted on blogs or social media.
+
+Report security issues
+
+Any developer, Android user, or security researcher can notify the Android security team of potential security issues through the vulnerability form.
+
+Bugs marked as security issues aren't externally visible, but they may eventually be made visible after the issue is evaluated or resolved. If you plan to submit a patch or Compatibility Test Suite (CTS) test to resolve a security issue, please attach it to the bug report and wait for a response before uploading the code to AOSP.
+
+Triage bugs
+
+The first task in handling a security vulnerability is to identify the severity of the bug and which component of Android is affected. The severity determines how the issue is prioritized, and the component determines who fixes the bug, who is notified, and how the fix gets deployed to users.
+
+Context types
+
+This table covers the definitions of hardware and software security contexts. The context can be defined by the sensitivity of data it typically processes or the area in which it runs. Not all security contexts are applicable to all systems. This table is ordered from least to most privileged.
+
+Context type	Type definition
+Constrained context	A restricted execution environment where only the most minimal of permissions are provided.
+
+For example, trusted apps processing untrusted data within a sandboxed environment.
+Unprivileged context	A typical execution environment expected by unprivileged code.
+
+For example, an Android app that runs in an SELinux domain with the untrusted_app_all attribute.
+Privileged context	A privileged execution environment which may have access to elevated permissions, handles multiple user PII, and/or maintains system integrity.
+
+For example, an Android app with capabilities that would be forbidden by the SELinux untrusted_app domain or with access to privileged|signature permissions.
+OS kernel	Functionality that:
+is part of the kernel
+runs in the same CPU context as the kernel (for example, device drivers)
+has direct access to kernel memory (for example, hardware components on the device)
+has the capability to load scripts into a kernel component (for example, eBPF)
+is one of a handful of user services that's considered kernel equivalent (such as, apexd, bpfloader, init, ueventd, and vold).
+
+Trusted Hardware Base (THB)	Discrete hardware components, generally on the SoC, which provide functionality critical to the core use cases of the device (such as, cellular basebands, DSPs, GPUs, and ML processors).
+Bootloader Chain	A component that configures the device on boot and then passes control to the Android OS.
+Trusted Execution Environment (TEE)	A component that is designed to be protected from even a hostile OS kernel (for example, TrustZone and hypervisors, such as pKVM, which protect Virtual Machines from the OS kernel).
+Secure Enclave / Secure Element (SE)	An optional hardware component designed to be protected from all other components on the device and from physical attack, as defined in Introduction to Secure Elements.
+
+This includes the Titan-M chip present in some Android devices.
+Severity
+
+The severity of a bug generally reflects the potential harm that could occur if a bug was successfully exploited. Use the following criteria to determine the severity.
+
+Rating	Consequence of successful exploitation
+Critical	
+Arbitrary code execution in the TEE or SE
+Bypass of software mechanisms designed to prevent safety-related software or hardware components from malfunctioning (for example, thermal protections)
+Remote access to sensitive credentials used for remote service authentication (for example, account passwords or bearer tokens)
+Remote arbitrary code execution within the cellular baseband context with no user interaction (for example, exploiting a bug in the cellular radio service)
+Remote arbitrary code execution in a privileged context, the bootloader chain, THB, or the OS kernel
+Remote bypass of user interaction requirements on package installation or equivalent behavior
+Remote bypass of user interaction requirements for core developer, security, or privacy settings
+Remote persistent denial of service (permanent, requiring reflashing the entire operating system, or a factory reset)
+Remote secure boot bypass
+Unauthorized access to data secured by the SE including access enabled by weak keys in the SE.
+
+High	
+A complete bypass of a core security feature (for example, SELinux, FBE, or seccomp)
+A general bypass for a defense in depth or exploit mitigation technology in the bootloader chain, TEE, or SE
+A general bypass for operating system protections that reveal memory or file contents across app, user, or profile boundaries
+Attacks against an SE that result in downgrading to a less secure implementation
+Pivot from remotely-reachable compromised bare-metal firmware (for example, baseband, Communications Processor (CP)) into the Application Processor (AP) kernel or bypass mechanisms designed to isolate bare-metal firmware from the AP kernel
+Bypass of device protection, factory reset protection (in Android 15 and later), or carrier restrictions
+Bypass of user interaction requirements that are secured by the TEE
+Cryptographic vulnerability that allows for attacks against end-to-end protocols, including attacks against transport layer security (TLS) and Bluetooth (BT).
+Local access to sensitive credentials used for remote service authentication (for example, account passwords or bearer tokens)
+Local arbitrary code execution in a privileged context, the bootloader chain, THB, or the OS kernel
+Local secure boot bypass
+Lockscreen bypass
+Local bypass of user interaction requirements for core developer, security, or privacy settings
+Local bypass of user interaction requirements on package installation or equivalent behavior
+Local persistent denial of service (permanent, requiring reflashing the entire operating system, or factory reset)
+Remote access to protected data (that is, data that is limited to a privileged context)
+Remote arbitrary code execution in an unprivileged context
+Remote denial of service for cellular or Wi-Fi service that persists until user intervention, triggered with no user interaction (for example, a crash of the cellular radio service with a malformed packet that is not automatically recovered and requires a manual restart or device reboot).
+Remote bypass of user interaction requirements (access to functionality or data that should require either user initiation or user permission)
+Targeted prevention of access to emergency services
+Transmitting sensitive information over an insecure network protocol (for example, HTTP and unencrypted Bluetooth) when the requester expects a secure transmission. Note that this doesn't apply to Wi-Fi encryption (such as, WEP)
+Unauthorized access to data secured by the TEE including access enabled by weak keys in the TEE
+
+Moderate	
+A general bypass for a defense in depth or exploit mitigation technology in a privileged context, THB, or the OS kernel
+A general bypass for operating system protections that reveal process state or metadata across app, user, or profile boundaries
+Bypassing Wi-Fi encryption or authentication
+Cryptographic vulnerability in standard crypto primitives that allows leaking of plaintext (not primitives used in TLS)
+Local access to protected data (that is, data that is limited to a privileged context)
+Local arbitrary code execution in an unprivileged context
+Local bypass of user interaction requirements (access to functionality or data that would normally require either user initiation or user permission)
+Remote access to unprotected data (that is, data normally accessible to any locally installed app)
+Remote arbitrary code execution in a constrained context
+Remote temporary device denial of service (remote hang or reboot)
+
+Low	
+A general bypass for a user level defense in depth or exploit mitigation technology in an unprivileged context
+Bypass of a normal protection level permission
+Cryptographic vulnerability in non-standard usage
+General bypass of on-device personalization features such as Voice Match or Face Match
+Incorrect documentation that may lead to a security vulnerability
+Local arbitrary code execution in a constrained context
+System-defined text that includes a misleading description that creates a false security expectation
+
+Negligible​ Security Impact (NSI​)	
+A vulnerability whose impact has been mitigated by one or more rating modifiers or version-specific architecture changes such that the effective severity is below Low, although the underlying code issue may remain
+Any vulnerability that requires a malformed filesystem, if that filesystem is always adopted/encrypted before use.
+Local temporary denial of service, such as where the condition can be resolved by rebooting the device or uninstalling the triggering app.
+Severity modifiers
+
+While the severity of security vulnerabilities is often easy to identify, ratings may change based on circumstances.
+
+Reason	Effect
+Requires running as a privileged context to execute the attack (not applicable to TEE, SE, and hypervisors such as pKVM)	-1 Severity
+Vulnerability-specific details limit the impact of the issue	-1 Severity
+Biometric authentication bypass that requires biometric information directly from the device owner	-1 Severity
+Compiler or platform configurations mitigate a vulnerability in the source code	Moderate Severity if the underlying vulnerability is Moderate or higher
+Requires physical access to device internals and is still possible if the device is off or hasn't been unlocked since being powered on	-1 Severity
+Requires physical access to device internals while the device is on and has previously been unlocked	-2 Severity
+A local attack that requires the bootloader chain to be unlocked	No higher than Low
+A local attack that requires Developer Mode or any persistent developer mode settings to be currently enabled on the device (and isn't a bug in Developer Mode itself).	No higher than Low
+If no SELinux domain can conduct the operation under the Google-provided SEPolicy	Negligible Security Impact
+Note: A CVE may not be issued for issues assessed as Low or NSI.
+Local versus proximal versus remote
+
+A remote attack vector indicates that the bug can be exploited without installing an app or without physical access to a device. This includes bugs that can be triggered by browsing to a web page, reading an email, receiving an SMS message, or connecting to a hostile network.
+
+Proximal attack vectors are considered remote. These include bugs that can be exploited only by an attacker who is physically near the target device, for example, a bug that requires sending malformed Wi-Fi or Bluetooth packets. We consider Ultra-wideband (UWB) and NFC-based attacks as proximal and therefore remote.
+
+Local attacks require the attacker to have prior access to the victim. In a hypothetical software-only example, this could be through a malicious app the victim has installed, or an Instant App they have consented to run.
+
+Successfully paired devices (such as Bluetooth companion devices) are considered local. We make a distinction between a paired device and a device that is participating in a pairing flow.
+
+Bugs that degrade the user's ability to identify the other device being paired with (i.e. authentication) are considered proximal and therefore remote.
+Bugs that happen during the pairing flow but before user consent (i.e. authorization) has been established are considered proximal and therefore remote.
+Bugs that happen after user consent has been established are considered local, even if pairing ultimately fails.
+
+Physical attack vectors are considered local. These include bugs that can be exploited only by an attacker who has physical access to the device, for example a bug in a lock screen or one that requires plugging in a USB cable. Since it's common for devices to be unlocked while plugged into USB, attacks that require a USB connection are the same severity regardless of whether the device is required to be unlocked or not.
+
+Network security
+
+Android assumes that all networks are hostile and could be injecting attacks or spying on traffic. While link-layer security (for example, Wi-Fi encryption) secures communication between a device and the Access Point it's connected to, it does nothing to secure the remaining links in the chain between the device and the servers it's communicating with.
+
+By contrast, HTTPS typically protects the entire communication end to end, encrypting the data at its source, then decrypting and verifying it only once it's reached its final destination. Because of this, vulnerabilities that compromise link-layer network security are rated less severe than vulnerabilities in HTTPS/TLS: Wi-Fi encryption alone is insufficient for most communication on the internet.
+
+Biometric authentication
+
+Biometric authentication is a challenging space, and even the best systems can be fooled by a near-match (see Android Developers Blog: Lockscreen and authentication improvements in Android 11). These severity ratings distinguish between two classes of attacks and are intended to reflect the actual risk to the end user.
+
+The first class of attacks allows bypassing biometric authentication in a generalizable way, without high quality biometric data from the owner. If, for instance, an attacker can place a piece of gum on a fingerprint sensor, and it grants access to the device based on residue left on the sensor, that's a simple attack that could be performed on any susceptible device. It doesn't require any knowledge of the device's owner. Given that it's generalizable and potentially impacts a larger number of users, this attack receives the full severity rating (for example, High, for a Lockscreen bypass).
+
+The other class of attacks generally involves a presentation attack instrument (spoof) based on the device owner. Sometimes this biometric information is relatively easy to get (for example, if someone's profile picture on social media is sufficient to fool biometric auth, then a biometric bypass would receive the full severity rating). But if an attacker would need to acquire biometric data directly from the device owner (for example, an infrared scan of their face), that's a significant enough barrier that it limits the number of people affected by the attack, so there's a -1 modifier.
+
+SYSTEM_ALERT_WINDOW and tapjacking
+
+For information about our policies regarding SYSTEM_ALERT_WINDOW and tapjacking, see the "Tapjacking/overlay SYSTEM_ALERT_WINDOW vulnerability on a non-security-critical screen" section of BugHunter University's Bugs with no security impact page.
+
+Multi-user security in Android Automotive OS
+
+Android Automotive OS adopts a multi user security model different from the other form factors. Each Android user is intended to be used by a different physical person. For example, a temporary guest user can be assigned to a friend who borrows the vehicle from the car's owner. To accommodate use cases like this, users by default have access to necessary components needed to use the vehicle, such as Wi-Fi and cellular network settings.
+
+Affected component
+
+The development team responsible for fixing the bug depends on which component the bug is in. It could be a core component of the Android platform, a kernel driver supplied by an original equipment manufacturer (OEM), or one of the preloaded apps on Pixel devices.
+
+Bugs in AOSP code are fixed by the Android engineering team in our internal repositories.
+
+The component is also a factor in how users get updates. A bug in the framework or kernel requires an over-the-air (OTA) firmware update that each OEM needs to push. A bug in an app or library published in Google Play (for example, Gmail, Google Play Services, or WebView) can be sent to Android users as an update from Google Play.
+
+Notify partners
+
+When a security vulnerability in AOSP is fixed in an Android Security Bulletin, we'll notify Android partners of issue details and provide patches. The list of backport-supported versions changes with each new Android release. Contact your device manufacturer for the list of supported devices.
+
+Release code to AOSP
+
+If the security bug is in an AOSP component, the fix is pushed out to AOSP after the OTA is released to users.
+
+Receive Android updates
+
+Updates to the Android system are generally delivered to devices through OTA update packages. These updates may come from the OEM who produced the device or the carrier who provides service to the device. Google Pixel device updates come from the Google Pixel team after going through a carrier technical acceptance (TA) testing procedure. Google also publishes Pixel factory images that can be side-loaded to devices.
+
+Update Google services
+
+In addition to providing patches for security bugs, the Android security team reviews security bugs to determine if there are other ways to protect users. For example, Google Play scans all apps and removes any app that attempts to exploit a security bug. For apps installed from outside of Google Play, devices with Google Play Services may also use the Verify Apps feature to warn users about apps that may be potentially harmful.
+
+Other resources
+
+Information for Android app developers: https://developer.android.com
+
+Security information exists throughout the Android Open Source and Developer sites. Good places to start:
+
+Secure Android devices
+Security checklist
+Reports
+
+Sometimes the Android Security team publishes reports or whitepapers. See Security Reports for more details.
+
+Was this helpful?
+
+Content and code samples on this page are subject to the licenses described in the Content License. Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+
+Last updated 2026-04-16 UTC.
+
+BUILD
+Android repository
+Requirements
+Downloading
+Preview binaries
+Factory images
+Driver binaries
+CONNECT
+@Android on X
+@AndroidDev on X
+Android Blog
+Google Security Blog
+Platform on Google Groups
+Building on Google Groups
+Porting on Google Groups
+GET HELP
+Android Help Center
+Pixel Help Center
+www.android.com
+Google Mobile Services
+Stack Overflow
+Issue Tracker
+About Android
+Community
+Legal
+License
+Privacy
+Site feedback
