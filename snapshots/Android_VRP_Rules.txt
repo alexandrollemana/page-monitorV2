@@ -1,36 +1,3 @@
-SKIP TO CONTENT (PRESS ENTER)
-Google Bug Hunters
-Report
-Rules & Rewards
-Learn
-Leaderboard
-Open Source Security
-Blog
-Rules
-Key Stats
-FAQs
-1
-showValues
-Rules
-About This Section
-Android & Friends
-expand_less
-Android and Google Devices Security Reward Program Rules
-Scope and Eligibility
-Qualifying Vulnerabilities
-Submission & PoC Guidelines
-Reward Amounts & Payout Structure
-How We Handle Duplicate Reports
-Legal and Policy Guidelines
-Google Mobile Vulnerability Reward Program Rules
-Chrome & Friends
-expand_more
-Google & Friends
-expand_more
-Open Source
-expand_more
-Other
-expand_more
 Android and Google Devices Security Reward Program Rules
 
 The Android and Google Devices Security Reward Program is a collaborative initiative designed to secure the Android ecosystem and Google hardware. We partner with the global security research community to identify, responsibly disclose, and effectively remediate high-impact vulnerabilities.
@@ -200,11 +167,3 @@ Participation in this Program does not create an employment, partnership, or age
 To avoid potential conflicts of interest, we will not grant rewards to people employed by Google or Google Partner companies who develop code for devices covered by this program.
 
 Last Updated: April 2026
-
-Privacy
-Terms
-Code of Conduct
-About Google
-Google Products
-help
-Help

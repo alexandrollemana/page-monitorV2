@@ -1,33 +1,3 @@
-SKIP TO CONTENT (PRESS ENTER)
-Google Bug Hunters
-Report
-Rules & Rewards
-Learn
-Leaderboard
-Open Source Security
-Blog
-Rules
-Key Stats
-FAQs
-1
-showValues
-Rules
-About This Section
-Android & Friends
-Chrome & Friends
-Google & Friends
-Open Source
-Other
-Android & Friends
-expand_more
-Chrome & Friends
-expand_more
-Google & Friends
-expand_more
-Open Source
-expand_more
-Other
-expand_more
 About This Section
 
 Welcome to the VRP rules section! Here, you’ll find an overview of the different vulnerability reward programs Google maintains, as well as guidance on related programs. See the below sections for an overview of the available programs, their scope, and where to report issues or submit contributions. Happy bug hunting!
@@ -36,7 +6,7 @@ If you have questions related to our handling of submitted security reports or t
 
 Tip: Not sure which program to report the issue you've discovered to? When in doubt, report to the Google and Alphabet Vulnerability Reward Program (VRP).
 
-Android & Friends & my new test 
+Android & Friends 
 Program name	Scope	Where to report
 Android and Google Devices Security Reward Program (rules)	Security issues affecting Pixel, Smart Home, Google Nest, Home APIs, Pixel Watch, and Fitbit devices and their latest operating systems	Use the standard form (report to Android & Devices VRP)
 Google Mobile Vulnerability Reward Program (rules)	Security issues affecting first-party Android applications	Use the standard form (report to Mobile VRP)
@@ -81,12 +51,3 @@ Bonus Awards (rules)	Time-limited (extra) bonuses for reports to specific VRP ta
 Our Rewards Philosophy (rules)	Provides background on how we evaluate submitted reports and determine rewards	n/a
 Vulnerability Research Grant (rules)	Provides upfront grants to encourage security research in a pre-defined area	n/a
 Code of Conduct (rules)	Outlines the standards of behavior expected from the community of researchers participating in our VRPs and the Google teams interacting with them	n/a
-
-
-Privacy
-Terms
-Code of Conduct
-About Google
-Google Products
-help
-Help
