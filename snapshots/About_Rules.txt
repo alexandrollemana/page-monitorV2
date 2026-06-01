@@ -1,4 +1,4 @@
-About This Section THIS IS A TEST 
+About This Section
 
 Welcome to the VRP rules section! Here, you’ll find an overview of the different vulnerability reward programs Google maintains, as well as guidance on related programs. See the below sections for an overview of the available programs, their scope, and where to report issues or submit contributions. Happy bug hunting!
 
