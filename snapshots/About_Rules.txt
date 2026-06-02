@@ -32,9 +32,6 @@ Google and Alphabet Vulnerability Reward Program (VRP) (rules)	Security issues a
 Open Source 
 Program name	Scope	Where to report
 Google Open Source Software Vulnerability Reward Program (rules)	Security issues affecting open source software stored in the public repositories of Google-owned GitHub organizations and selected repositories hosted on other platforms	Use the standard form (report to OSS VRP)
-OSS-Fuzz Reward Program (rules)	Closed for submission of new contributions from May 1, 2026! For more details, see the rules.
-
-Rewards contributions to OSS-Fuzz, such as integrating new projects, improving existing projects, or adding ways to find new classes of vulnerabilities	n/a
 Patch Rewards Program (rules)	Rewards proactive improvements you've made to security in open source projects	Submit patches using the dedicated Patch Rewards form
 Tsunami Patch Rewards Program (rules)	As of April 9, 2026, this program is in on hold for the foreseeable future and currently not accepting new requests (details).
 

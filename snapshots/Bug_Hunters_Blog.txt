@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (71 ARTICLES)
+FILTERS (72 ARTICLES)
+
+SOPHIE SCHMIEG, CHRISTIANE PETERS, ANDY WARNER | JUN 1, 2026
+
+Where to Go Next with Quantum-Safe Certificates
+This blog post explores how Google thinks about the development and deployment of quantum-safe digital signatures.
+Read more
+arrow_forward
 
 HARSH LAL | MAY 27, 2026
 
@@ -71,13 +78,6 @@ Hybrid Transport Goes Offline!
 Find out how the FIDO alliances's Hybrid transport architecture was expanded to support authentication in the offline world, increasing reliability and unlocking many new use cases.
 Read more
 arrow_forward
-
-HARSH LAL | FEB 23, 2026
-
-Hybrid Protocol: The JSON Upgrade
-This post highlights how Hybrid transport is being extended to support generic JSON messages – paving the way for a host of new, secure authentication and credential use cases.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 71
+1 – 10 of 72
