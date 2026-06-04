@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (72 ARTICLES)
+FILTERS (73 ARTICLES)
+
+DAMIAN MENSCHER | JUN 4, 2026
+
+Bit Rot Doesn't Always Increase Entropy – A Story from the Archives
+This blog post takes us back to 2010, retracing and incident where a statistical anomaly led to the discovery of a subtle flaw in the way we were using a security-critical library.
+Read more
+arrow_forward
 
 SOPHIE SCHMIEG, CHRISTIANE PETERS, ANDY WARNER | JUN 1, 2026
 
@@ -71,13 +78,6 @@ Mitigating URL-based Exfiltration in Gemini
 This post takes a look at how Gemini and other agents created by Google mitigate URL-based data exfiltration attacks.
 Read more
 arrow_forward
-
-HARSH LAL | MAR 4, 2026
-
-Hybrid Transport Goes Offline!
-Find out how the FIDO alliances's Hybrid transport architecture was expanded to support authentication in the offline world, increasing reliability and unlocking many new use cases.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 72
+1 – 10 of 73
