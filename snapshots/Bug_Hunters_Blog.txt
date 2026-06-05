@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (73 ARTICLES)
+FILTERS (74 ARTICLES)
+
+SABA KIAEI, COLLIN EL-HOSSARI | JUN 5, 2026
+
+Bug Hunting on Gemini Spark
+Gemini Spark brings a persistent agent to the Gemini App. Learn how to approach security testing for this new paradigm and focus on high-impact bugs.
+Read more
+arrow_forward
 
 DAMIAN MENSCHER | JUN 4, 2026
 
@@ -71,13 +78,6 @@ Google VRPs in Review – 2025
 This blog post takes you through the 2025 highlights across the assorted VRPs at Google.
 Read more
 arrow_forward
-
-JUN KOKATSU, KOEN VERNOOIJ, FABIAN BORNHOFEN | MAR 9, 2026
-
-Mitigating URL-based Exfiltration in Gemini
-This post takes a look at how Gemini and other agents created by Google mitigate URL-based data exfiltration attacks.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 73
+1 – 10 of 74
