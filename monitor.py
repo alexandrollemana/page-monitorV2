@@ -27,6 +27,7 @@ import hashlib
 import html as html_lib
 import json
 import os
+import re
 from datetime import datetime, timezone
 
 from playwright.sync_api import sync_playwright
@@ -41,6 +42,21 @@ PAGES = {
     "ASB Overview": "https://source.android.com/docs/security/bulletin/asb-overview",
     "Bug Hunters Leaderboard": "https://bughunters.google.com/leaderboard",
     "Bug Hunters Blog": "https://bughunters.google.com/blog",
+}
+
+
+# Per-page text scrubbers applied AFTER fetch and BEFORE hashing. Use these to
+# strip volatile UI bits that have no policy/research signal (e.g. live
+# counters, rotating timestamps) so they don't generate daily false positives.
+def _clean_leaderboard(text):
+    # Strip the pagination total like "1 – 20 of 1,975" — that count climbs
+    # every time someone signs up and produces a daily noisy diff.
+    pagination = re.compile(r"^\s*\d+\s*[–-]\s*\d+\s*of\s*[\d,]+\s*$")
+    return "\n".join(line for line in text.splitlines() if not pagination.match(line))
+
+
+CLEANERS = {
+    "Bug Hunters Leaderboard": _clean_leaderboard,
 }
 
 # All paths are relative to this file's folder, so the script works
@@ -247,6 +263,9 @@ def main():
         for name, url in PAGES.items():
             print(f"\n📄 {name}...")
             content = fetch_page_content(url, browser)
+
+            if content is not None and name in CLEANERS:
+                content = CLEANERS[name](content)
 
             if content is None:
                 # Fetch failed — keep the old hash so we don't lose state
