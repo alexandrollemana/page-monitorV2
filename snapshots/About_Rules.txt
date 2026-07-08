@@ -39,7 +39,9 @@ Rewards contributions to Tsunami security scanners which enhance vulnerability d
 InternetCTF Tsunami Patch Rewards Program (rules)	As of April 9, 2026, this program is in on hold for the foreseeable future and currently not accepting new requests (details).
 
 Rewards contributions to discovering & reporting 0-day vulnerabilities in open source software and implementing Tsunami plugins to detect them	Exfiltrate flags at InternetCTF and fill in the survey for vulnerability report and Tsunami plugin implementation (full application process)
-OSV-SCALIBR Patch Rewards Program Rules (rules)	Rewards contributions to OSV-SCALIBR, Google's filesystem scanner for vulnerability detection and identifying software inventory extraction capabilities	Submit a request using the dedicated OSV-SCALIBR form; note that prior approval by the OSV-SCALIBR team is required (full application process)
+OSV-SCALIBR Patch Rewards Program Rules (rules)	As of July 6, 2026, this program is in on hold for the foreseeable future and currently not accepting new requests (details).
+
+Rewards contributions to OSV-SCALIBR, Google's filesystem scanner for vulnerability detection and identifying software inventory extraction capabilities	Submit a request using the dedicated OSV-SCALIBR form; note that prior approval by the OSV-SCALIBR team is required (full application process)
 
 
 Other 
