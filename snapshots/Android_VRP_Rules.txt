@@ -162,6 +162,8 @@ If you are employed by a hardware or software vendor partnered with Google, you 
 
 Taxes and Financial Liability All reward amounts are considered taxable income in most jurisdictions. You are solely responsible for any tax implications and reporting requirements associated with your payout. This program is discretionary; Google reserves the unilateral right to cancel or modify the program at any time, and the decision to pay a reward is entirely at our discretion. All reward amounts and eligibility determinations are final.
 
+If Google Payments is your selected payment option and you're not a US resident for income tax purposes, you confirm that any services you provide to Google won't be performed in the US. If you ever plan to provide services in the US, please let us know in writing at least 90 days beforehand by emailing STCnotices@google.com.
+
 Participation in this Program does not create an employment, partnership, or agency relationship.
 
 To avoid potential conflicts of interest, we will not grant rewards to people employed by Google or Google Partner companies who develop code for devices covered by this program.
