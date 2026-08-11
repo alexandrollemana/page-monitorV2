@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (74 ARTICLES)
+FILTERS (75 ARTICLES)
+
+THYLA VAN DER MERWE, CHRISTIANE PETERS, SOPHIE SCHMIEG, JONATHAN KATZ | AUG 10, 2026
+
+More Cryptanalysis Makes Us All Safer
+This post analyzes results published by Anthropic and argues that these recent advances do not signal the downfall of cryptography.
+Read more
+arrow_forward
 
 SABA KIAEI, COLLIN EL-HOSSARI | JUN 5, 2026
 
@@ -71,13 +78,6 @@ Streamlining Google’s OSS VRP: Key Rule Updates
 Read about our updates to the OSS VRP rules which are designed to help us filter out low-quality reports and focus on real-world impact.
 Read more
 arrow_forward
-
-TONY MENDEZ, DIRK GÖHMANN | MAR 11, 2026
-
-Google VRPs in Review – 2025
-This blog post takes you through the 2025 highlights across the assorted VRPs at Google.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 74
+1 – 10 of 75
