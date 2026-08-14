@@ -158,6 +158,8 @@ Program Eligibility To receive a financial reward, you must be eligible under ap
 
 We cannot issue rewards to individuals on sanctions lists or residing in countries under current comprehensive United States embargoes (including but not limited to Cuba, Iran, North Korea, Syria, Crimea, and the Luhansk/Donetsk regions). Due to administrative and banking restrictions, we also cannot issue rewards to individuals in Russia or Belarus.
 
+Unless otherwise authorized in advance, in order to qualify for a reward, reports submitted to the VRP at any period of time may not utilize Alphabet proprietary, confidential, or need-to-know information. We will evaluate every submission on a case-by-case basis.
+
 If you are employed by a hardware or software vendor partnered with Google, you are ineligible for rewards for vulnerabilities found in products, code, or services related to your employer’s partnership with Google.
 
 Taxes and Financial Liability All reward amounts are considered taxable income in most jurisdictions. You are solely responsible for any tax implications and reporting requirements associated with your payout. This program is discretionary; Google reserves the unilateral right to cancel or modify the program at any time, and the decision to pay a reward is entirely at our discretion. All reward amounts and eligibility determinations are final.
