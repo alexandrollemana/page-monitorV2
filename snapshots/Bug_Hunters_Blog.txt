@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (75 ARTICLES)
+FILTERS (76 ARTICLES)
+
+BASTIAN KERSTING, MAX HILS | AUG 24, 2026
+
+Scaling Memory Safety: AI-Assisted Rewrites of C/C++ Dependencies to Rust
+This blog post describes how we used AI to help us rewrite a C library (giflib) to Rust to mitigate memory safety vulnerabilities.
+Read more
+arrow_forward
 
 THYLA VAN DER MERWE, CHRISTIANE PETERS, SOPHIE SCHMIEG, JONATHAN KATZ | AUG 10, 2026
 
@@ -71,13 +78,6 @@ Passkeys are Your New Best Friend
 Find out more about how passkeys, which are designed to replace passwords, work and which advantages they bring.
 Read more
 arrow_forward
-
-CAMILLE SCHNEIDER, JESSICA ZHANG, HAYDEN BLAUZVERN | MAR 19, 2026
-
-Streamlining Google’s OSS VRP: Key Rule Updates
-Read about our updates to the OSS VRP rules which are designed to help us filter out low-quality reports and focus on real-world impact.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 75
+1 – 10 of 76
