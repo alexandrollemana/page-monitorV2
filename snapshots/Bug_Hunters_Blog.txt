@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (76 ARTICLES)
+FILTERS (77 ARTICLES)
+
+ARVIN SHIVRAM | SEP 11, 2026
+
+Breaking into Google's GFile for $100k
+This post details an attack on Google’s internal APIs, bypassing authorization to exploit the GFile library to gain access to internal filesystems and storage.
+Read more
+arrow_forward
 
 BASTIAN KERSTING, MAX HILS | AUG 24, 2026
 
@@ -71,13 +78,6 @@ Standardizing Rewards in Google VRP: Introducing Information Tiers and Action Cr
 We are evolving our reward model to reflect the changing security landscape by introducing two new dimensions to our model: Information Tiers and Action Criticality.
 Read more
 arrow_forward
-
-HARSH LAL | MAR 30, 2026
-
-Passkeys are Your New Best Friend
-Find out more about how passkeys, which are designed to replace passwords, work and which advantages they bring.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 76
+1 – 10 of 77
