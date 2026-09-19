@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (77 ARTICLES)
+FILTERS (78 ARTICLES)
+
+JESSICA SCHÄFER, ANNA HUPA | SEP 18, 2026
+
+ESCAL8 2026: Agentic Hacking in the Lion City
+Check out this post to learn more about ESCAL8 2026, Google’s annual flagship security conference, coming to Singapore from October 23–25, 2026!
+Read more
+arrow_forward
 
 ARVIN SHIVRAM | SEP 11, 2026
 
@@ -71,13 +78,6 @@ Evolving the Android & Chrome VRPs for the AI Era
 We are announcing changes to the Chrome & Android Vulnerability Reward Programs (VRP) which take effect immediately and are focused on adjusting our reward amounts and bonuses to reflect the types of reports and bug categories that provide the most value to security today.
 Read more
 arrow_forward
-
-CAMILLE SCHNEIDER, JAN GORA, SAM ERB | APR 8, 2026
-
-Standardizing Rewards in Google VRP: Introducing Information Tiers and Action Criticality
-We are evolving our reward model to reflect the changing security landscape by introducing two new dimensions to our model: Information Tiers and Action Criticality.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 77
+1 – 10 of 78
