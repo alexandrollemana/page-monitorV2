@@ -15,9 +15,7 @@ Google Mobile Vulnerability Reward Program (rules)	Security issues affecting fir
 Chrome & Friends 
 Program name	Scope	Where to report
 Chrome Extensions Vulnerability Reward Program (rules)	Security issues in first-party Chrome extensions	Use the standard form (report to Chrome Extensions VRP)
-Chrome Vulnerability Reward Program (rules)	Security issues affecting the Chrome Browser	Use the Chromium issue tracker submission form
-
-Alternatively, you can report issues via the standard form (report to Chrome VRP)
+Chrome Vulnerability Reward Program (rules)	Security issues affecting the Chrome Browser	Use the standard form (report to Chrome VRP)
 ChromeOS Vulnerability Reward Program (rules)	Security issues affecting Chromebooks and the ChromeOS ecosystem	Use the standard form (report to ChromeOS VRP)
 
 
