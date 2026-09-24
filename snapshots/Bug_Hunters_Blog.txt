@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (78 ARTICLES)
+FILTERS (79 ARTICLES)
+
+MICHAŁ BENTKOWSKI (ON BEHALF OF THE PAGEBREAK TEAM) | SEP 24, 2026
+
+Google's PageBreak Project – Real-World Findings
+This post provides a technical deep dive into specific, real-world vulnerabilities discovered by Google's PageBreak scanner
+Read more
+arrow_forward
 
 JESSICA SCHÄFER, ANNA HUPA | SEP 18, 2026
 
@@ -71,13 +78,6 @@ bugSWAT in Seoul – April 2026
 In this blog post, we'll take a look at what makes bugSWAT events valuable in general, and focus on the latest edition in Seoul, which took place in April 2026.
 Read more
 arrow_forward
-
-ALEX GOUGH, SHAILESH SAINI, TONY MENDEZ | APR 30, 2026
-
-Evolving the Android & Chrome VRPs for the AI Era
-We are announcing changes to the Chrome & Android Vulnerability Reward Programs (VRP) which take effect immediately and are focused on adjusting our reward amounts and bonuses to reflect the types of reports and bug categories that provide the most value to security today.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 78
+1 – 10 of 79
