@@ -29,7 +29,7 @@ Fitbit Trackers and Smartwatches
 Platform and Software Scope – The program covers vulnerabilities within the device software stack, including but not limited to:
 
 Android Open Source Project (AOSP) code
-Android TV, WearOS and Android Automotive OS (AAOS)
+Android TV, WearOS, Android Automotive OS (AAOS), and GooglebookOS
 OEM proprietary code and drivers shipped on eligible devices
 The Trusted Execution Environment (TEE), Secure Elements (e.g., Titan M2), bootloaders, and device firmware (including SoC, MCU, and radio units)
 
@@ -172,4 +172,4 @@ Participation in this Program does not create an employment, partnership, or age
 
 To avoid potential conflicts of interest, we will not grant rewards to people employed by Google or Google Partner companies who develop code for devices covered by this program.
 
-Last Updated: April 2026
+Last Updated: October 2026
