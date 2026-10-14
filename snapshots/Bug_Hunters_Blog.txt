@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (79 ARTICLES)
+FILTERS (80 ARTICLES)
+
+ALEX GOUGH, JON SERPAS | OCT 13, 2026
+
+Changes to the Chrome VRP
+Today we are announcing changes to the [Chrome Vulnerability Rewards Program](about/rules/chrome-friends/chrome-vulnerability-reward-program-rules), adjusting our reward amounts and program categories to reward deeper security research, recognize high-value fixes across more severity tiers, and provide new opportunities for researcher recognition.
+Read more
+arrow_forward
 
 MICHAŁ BENTKOWSKI (ON BEHALF OF THE PAGEBREAK TEAM) | SEP 24, 2026
 
@@ -71,13 +78,6 @@ A Look at Hardware Security Keys for Passkeys
 Passkeys can be combined with hardware security keys to implement advanced security features when a particularly robust security strategy is required.
 Read more
 arrow_forward
-
-SAM ERB, MARTIN STRAKA, JOHN KOTHEIMER | MAY 11, 2026
-
-bugSWAT in Seoul – April 2026
-In this blog post, we'll take a look at what makes bugSWAT events valuable in general, and focus on the latest edition in Seoul, which took place in April 2026.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 79
+1 – 10 of 80
