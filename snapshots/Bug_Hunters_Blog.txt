@@ -12,7 +12,7 @@ FILTERS (80 ARTICLES)
 ALEX GOUGH, JON SERPAS | OCT 13, 2026
 
 Changes to the Chrome VRP
-Today we are announcing changes to the [Chrome Vulnerability Rewards Program](about/rules/chrome-friends/chrome-vulnerability-reward-program-rules), adjusting our reward amounts and program categories to reward deeper security research, recognize high-value fixes across more severity tiers, and provide new opportunities for researcher recognition.
+Today we are announcing changes to the Chrome Vulnerability Rewards Program, adjusting our reward amounts and program categories to reward deeper security research, recognize high-value fixes across more severity tiers, and provide new opportunities for researcher recognition.
 Read more
 arrow_forward
 
