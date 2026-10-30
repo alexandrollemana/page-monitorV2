@@ -7,7 +7,14 @@ Google's goal is to make it easier for ourselves, and the rest of the world, to 
 BLOGS
 showValues
 
-FILTERS (80 ARTICLES)
+FILTERS (81 ARTICLES)
+
+ANNA HUPA, PALOMA SIMON, GERARDO FERNANDEZ | OCT 29, 2026
+
+The Story of init.g(malaga): Three Editions of Growing Future Leaders
+This blog post outlines the origins of and how it has developed over the past few years, including a preview of what awaits participants in the 2026 edition. Why Málaga? From a Homegrown Startup to a Community Crossroads To understand why resonates...
+Read more
+arrow_forward
 
 ALEX GOUGH, JON SERPAS | OCT 13, 2026
 
@@ -71,13 +78,6 @@ Where to Go Next with Quantum-Safe Certificates
 This blog post explores how Google thinks about the development and deployment of quantum-safe digital signatures.
 Read more
 arrow_forward
-
-HARSH LAL | MAY 27, 2026
-
-A Look at Hardware Security Keys for Passkeys
-Passkeys can be combined with hardware security keys to implement advanced security features when a particularly robust security strategy is required.
-Read more
-arrow_forward
 Items per page:
 10
-1 – 10 of 80
+1 – 10 of 81
