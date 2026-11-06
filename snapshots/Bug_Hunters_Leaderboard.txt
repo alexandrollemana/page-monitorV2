@@ -63,19 +63,19 @@ April 2023
 
 7
 location_on
-ARGENTINA
-Valentino Massaro
-
-Joined
-June 2023
-
-8
-location_on
 SOUTH KOREA
 Mingi Cho
 
 Joined
 March 2023
+
+8
+location_on
+ARGENTINA
+Valentino Massaro
+
+Joined
+June 2023
 
 9
 location_on
